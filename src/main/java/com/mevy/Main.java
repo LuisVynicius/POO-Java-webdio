@@ -2,7 +2,9 @@ package com.mevy;
 
 import java.time.LocalDate;
 
+import com.mevy.entities.Bootcamp;
 import com.mevy.entities.Course;
+import com.mevy.entities.Dev;
 import com.mevy.entities.Mentorship;
 
 public class Main {
@@ -22,7 +24,33 @@ public class Main {
         mentorship.setDescription("Description01");
         mentorship.setDate(LocalDate.now());
         
-        System.out.println(course01);
-        System.out.println(course02);
+        Bootcamp bootcamp = new Bootcamp();
+        bootcamp.setName("Bootcamp01");
+        bootcamp.setDescription("Description01");
+        bootcamp.getContents().add(course01);
+        bootcamp.getContents().add(course02);
+        bootcamp.getContents().add(mentorship);
+
+        Dev dev01 = new Dev();
+        dev01.setName("Dev01");
+        dev01.subscribeBootcamp(bootcamp);
+        System.out.println("Contents: " + dev01.getSubscribedContents());
+        dev01.progress();
+        System.out.println("Completeds: " + dev01.getCompletedContents());
+
+        Dev dev02 = new Dev();
+        dev02.setName("Dev02");
+        dev02.subscribeBootcamp(bootcamp);
+        System.out.println("Contents: " + dev02.getSubscribedContents());
+        dev02.progress();
+        System.out.println("Completeds: " + dev02.getCompletedContents());
+
+
+
+        
+
+
+        // System.out.println(course01);
+        //System.out.println(course02);
     }
 }
