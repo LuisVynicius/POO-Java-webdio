@@ -3,16 +3,23 @@ package com.mevy.entities;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
 
 @NoArgsConstructor
-@Getter
-@Setter
-@ToString
-public class Course {
+public class Course extends Content{
     
-    private String title;
-    private String description;
-    private int courseHours; 
+    @Getter
+    @Setter
+    private int courseHours;
+
+    @Override
+    public double calculateXP() {
+        return STANDARD_XP * courseHours;
+    }
+
+    @Override
+    public String toString() {
+        return "Course [courseHours=" + courseHours + ", getDescription()=" + getDescription() + ", getTitle()="
+                + getTitle() + "]";
+    }
 
 }
